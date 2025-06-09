@@ -1,0 +1,28 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Alzheimer's Stage Prediction</title>
+</head>
+<body>
+    <h1>Alzheimer's Stage Prediction</h1>
+
+    <form action="/predict" method="POST" enctype="multipart/form-data">
+        <label>MMSE: <input type="number" step="any" name="mmse" required></label><br>
+        <label>eTIV: <input type="number" step="any" name="etiv" required></label><br>
+        <label>nWBV: <input type="number" step="any" name="nwbv" required></label><br>
+        <label>ASF: <input type="number" step="any" name="asf" required></label><br>
+        <label>Age: <input type="number" step="any" name="age" required></label><br>
+        <label>SES: <input type="number" step="any" name="ses" required></label><br>
+        <label>Gender (0 = Female, 1 = Male): <input type="number" name="gender" min="0" max="1" required></label><br>
+        <label>MRI Image: <input type="file" name="mri" accept="image/*" required></label><br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction %}
+        <h2>{{ prediction }}</h2>
+    {% endif %}
+</body>
+</html>
